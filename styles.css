@@ -1209,7 +1209,7 @@ body {
 @media (max-width: 992px) {
     .hero {
         grid-template-columns: 1fr;
-        padding-top: 40px;
+        padding-top: 30px;
     }
     
     .hero-title {
@@ -1226,36 +1226,141 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Devotional Bar Mobile */
+    .devotional-bar {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+
+    /* Top Utility Info Bar Mobile */
     .top-info-bar {
-        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 16px;
+        padding: 6px 12px;
+        font-size: 0.78rem;
+    }
+
+    .top-info-bar .info-item:nth-child(2) {
+        display: none; /* Hide duplicate email text on small screens to keep top bar ultra-clean */
+    }
+
+    /* Mobile Navbar Header */
+    .navbar {
+        padding: 10px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    .brand-container {
+        gap: 8px;
+    }
+
+    .brand-logo-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+    }
+
+    .brand-title {
+        font-size: 1rem;
+        line-height: 1.1;
+    }
+
+    .brand-tagline {
+        font-size: 0.65rem;
+    }
+
+    .proprietor-badge {
+        font-size: 0.6rem;
+        white-space: nowrap;
+    }
+
+    .nav-cta-btns {
         gap: 6px;
-        text-align: center;
+    }
+
+    .nav-cta-btns .btn-primary {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: var(--radius-sm);
     }
     
     .mobile-menu-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        font-size: 1.2rem;
     }
     
+    /* Fullscreen/Slide-down Mobile Drawer Menu */
     .nav-links {
         position: fixed;
-        top: 70px;
+        top: 60px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--bg-dark);
+        height: calc(100vh - 60px);
+        background: rgba(7, 10, 18, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         justify-content: flex-start;
-        padding: 40px 20px;
-        gap: 20px;
+        padding: 30px 24px;
+        gap: 18px;
         transition: var(--transition-smooth);
         border-top: 1px solid var(--border-color);
+        overflow-y: auto;
+        z-index: 998;
     }
 
     .nav-links.active {
         left: 0;
     }
 
+    .nav-link {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        width: 100%;
+    }
+
     .package-card.popular {
         transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo-box {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand-title {
+        font-size: 0.92rem;
+    }
+
+    .brand-tagline {
+        font-size: 0.6rem;
+    }
+
+    .proprietor-badge {
+        display: none; /* Hide detailed badge line on tiny mobile screens to avoid overflow */
+    }
+
+    .nav-cta-btns .btn-primary span {
+        display: none; /* Hide button text, show call icon on micro screens */
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hero-subtitle-ta {
+        font-size: 1.05rem;
     }
 }
