@@ -171,8 +171,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 `Details: ${message || 'No additional details'}`
             );
 
-            // Open WhatsApp directly with inquiry details
-            window.open(`https://wa.me/919842186217?text=${text}`, '_blank');
-        });
+    // 5. Dynamic WhatsApp Visiting Card Share & Random Image Selector
+    const visitingCardImages = [
+        'https://nellaicctv.in/assets/camera_visiting_card_front.png',
+        'https://nellaicctv.in/assets/camera_visiting_card_design3.png',
+        'https://nellaicctv.in/assets/camera_visiting_card_design4.png',
+        'https://nellaicctv.in/assets/visiting_card_front.png'
+    ];
+
+    // Pick a random visiting card model image on every page visit/share
+    const randomCardImg = visitingCardImages[Math.floor(Math.random() * visitingCardImages.length)];
+    const ogImageTag = document.getElementById('ogImageTag');
+    if (ogImageTag) {
+        ogImageTag.setAttribute('content', randomCardImg);
     }
 });
+
