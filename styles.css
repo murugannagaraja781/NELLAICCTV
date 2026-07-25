@@ -1273,8 +1273,11 @@ body {
     }
 
     .proprietor-badge {
-        font-size: 0.6rem;
-        white-space: nowrap;
+        font-size: 0.68rem;
+    }
+
+    .proprietor-badge .prop-phone {
+        display: none; /* Hide secondary phone string in header title to keep mobile header clean */
     }
 
     .nav-cta-btns {
@@ -1282,9 +1285,10 @@ body {
     }
 
     .nav-cta-btns .btn-primary {
-        padding: 8px 12px;
-        font-size: 0.8rem;
+        padding: 8px 14px;
+        font-size: 0.85rem;
         border-radius: var(--radius-sm);
+        white-space: nowrap;
     }
     
     .mobile-menu-toggle {
