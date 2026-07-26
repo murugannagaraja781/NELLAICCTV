@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NELLAI CCTV - Professional GST Billing & Invoice App</title>
+    <title>NELLAI CCTV - GST Billing & Invoice App</title>
     <!-- App Launcher Icon -->
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="apple-touch-icon" href="assets/logo.png">
@@ -42,7 +42,139 @@
             padding: 20px;
         }
 
-        /* Top App Header */
+        /* -------------------------------------------------------------
+           SECURE LOGIN MODAL OVERLAY
+           ------------------------------------------------------------- */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(7, 10, 18, 0.96);
+            backdrop-filter: blur(16px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 107, 0, 0.4);
+            border-radius: 24px;
+            padding: 36px 30px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 107, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.5));
+        }
+
+        .login-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .login-title span {
+            color: var(--primary-orange);
+        }
+
+        .login-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .login-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .login-form-group label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .login-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-input-wrap i {
+            position: absolute;
+            left: 14px;
+            color: var(--primary-orange);
+            font-size: 1.05rem;
+        }
+
+        .login-control {
+            width: 100%;
+            background: rgba(7, 10, 18, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 14px 14px 44px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .login-control:focus {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 12px rgba(255, 107, 0, 0.3);
+        }
+
+        .login-error {
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid rgba(255, 59, 48, 0.4);
+            color: #FF3B30;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .btn-login-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #e05d00 100%);
+            color: white;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.4);
+            transition: 0.2s ease;
+        }
+
+        .btn-login-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 0, 0.6);
+        }
+
+        /* App Main Header */
         .app-header {
             max-width: 1100px;
             margin: 0 auto 24px auto;
@@ -65,15 +197,15 @@
         }
 
         .app-logo {
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(0, 102, 255, 0.5));
         }
 
         .brand-info h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: white;
             letter-spacing: 0.5px;
@@ -98,15 +230,15 @@
 
         .header-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border: none;
             cursor: pointer;
             display: flex;
@@ -134,6 +266,12 @@
             border: 1px solid var(--border-color);
         }
 
+        .btn-danger {
+            background: rgba(255, 59, 48, 0.2);
+            color: #FF3B30;
+            border: 1px solid rgba(255, 59, 48, 0.4);
+        }
+
         .btn:hover {
             transform: translateY(-2px);
             filter: brightness(1.1);
@@ -148,12 +286,6 @@
             gap: 24px;
         }
 
-        @media (max-width: 992px) {
-            .workspace {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .card-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -165,7 +297,7 @@
 
         .panel-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: white;
             margin-bottom: 18px;
@@ -184,24 +316,18 @@
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        @media (max-width: 600px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+            gap: 14px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .form-group label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -224,11 +350,18 @@
             box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
         }
 
-        /* Billing Items Table */
+        /* Billing Items Table & Mobile Wrapper */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .items-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            min-width: 500px; /* Ensures table scrolls cleanly on mobile */
         }
 
         .items-table th {
@@ -236,13 +369,13 @@
             padding: 12px 10px;
             background: rgba(255, 255, 255, 0.04);
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             border-bottom: 1px solid var(--border-color);
         }
 
         .items-table td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
             vertical-align: middle;
         }
@@ -292,12 +425,12 @@
             margin-top: 6px;
         }
 
-        /* Invoice History Table */
+        /* History List */
         .history-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 400px;
+            gap: 10px;
+            max-height: 350px;
             overflow-y: auto;
         }
 
@@ -305,31 +438,93 @@
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 14px;
+            padding: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .history-info h4 {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: white;
         }
 
         .history-info p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
         }
 
         .history-price {
             font-weight: 800;
             color: var(--success);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         /* -------------------------------------------------------------
-           ULTRA-PROFESSIONAL A4 PRINTABLE TAX INVOICE FORMAT
+           100% MOBILE RESPONSIVE MEDIA QUERIES (@media max-width 768px & 480px)
            ------------------------------------------------------------- */
+        @media (max-width: 992px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px 10px;
+            }
+
+            .app-header {
+                padding: 16px;
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .brand-box {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .header-actions {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .header-actions .btn {
+                flex: 1;
+                justify-content: center;
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+
+            .card-panel {
+                padding: 16px;
+                border-radius: 16px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-info h1 {
+                font-size: 1.3rem;
+            }
+            .app-logo {
+                width: 50px;
+                height: 50px;
+            }
+            .header-actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Printable Invoice Layout */
         #printableInvoice {
             display: none;
         }
@@ -341,7 +536,7 @@
                 padding: 0;
             }
 
-            .app-header, .workspace {
+            .login-overlay, .app-header, .workspace {
                 display: none !important;
             }
 
@@ -383,7 +578,6 @@
                 font-weight: 900;
                 color: #1B2A4A;
                 margin: 0;
-                line-height: 1.1;
             }
 
             .prt-tagline {
@@ -415,8 +609,6 @@
                 font-weight: 900;
                 color: #1B2A4A;
                 margin-bottom: 8px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
                 border-bottom: 2px solid #FF6B00;
                 padding-bottom: 4px;
             }
@@ -484,10 +676,6 @@
                 color: #1E293B;
             }
 
-            .prt-table tr:nth-child(even) {
-                background: #F8FAFC;
-            }
-
             .prt-footer-grid {
                 display: flex;
                 justify-content: space-between;
@@ -533,22 +721,46 @@
                 justify-content: space-between;
                 align-items: flex-end;
             }
-
-            .prt-stamp-box {
-                width: 150px;
-                height: 70px;
-                border: 1px dashed #94A3B8;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #94A3B8;
-                font-size: 0.75rem;
-            }
         }
     </style>
 </head>
 <body>
+
+    <!-- SECURE LOGIN MODAL OVERLAY -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <img src="assets/logo.png" alt="NELLAI CCTV Logo" class="login-logo">
+            <div class="devotional-badge">✨ திருச்செந்தூர் முருகன் துணை ✨</div>
+            <h2 class="login-title">NELLAI <span>CCTV</span> BILLING</h2>
+            <p class="login-subtitle">Authorized Admin Login | Proprietor: ARUMUGA NAINAR</p>
+
+            <div class="login-error" id="loginErrorMsg">
+                <i class="fa-solid fa-triangle-exclamation"></i> Invalid Username or Password!
+            </div>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="login-form-group">
+                    <label>Username</label>
+                    <div class="login-input-wrap">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="loginUser" class="login-control" placeholder="Enter username (admin)" value="admin" required>
+                    </div>
+                </div>
+
+                <div class="login-form-group">
+                    <label>Password</label>
+                    <div class="login-input-wrap">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPass" class="login-control" placeholder="Enter password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login-submit">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login to Billing App
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- APP HEADER -->
     <header class="app-header">
@@ -564,7 +776,8 @@
         <div class="header-actions">
             <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-house"></i> Main Website</a>
             <a href="visiting_card.html" class="btn btn-secondary"><i class="fa-solid fa-id-card"></i> Visiting Cards</a>
-            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Corporate Invoice (A4)</button>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Invoice (A4)</button>
+            <button class="btn btn-danger" onclick="handleLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </div>
     </header>
 
@@ -639,21 +852,23 @@
                     </select>
                 </div>
 
-                <table class="items-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 40%;">Item Description</th>
-                            <th style="width: 15%;">HSN/SAC</th>
-                            <th style="width: 12%;">Qty</th>
-                            <th style="width: 15%;">Rate (₹)</th>
-                            <th style="width: 13%;">Total (₹)</th>
-                            <th style="width: 5%;"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="itemsTableBody">
-                        <!-- Dynamic Item Rows -->
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="items-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Item Description</th>
+                                <th style="width: 15%;">HSN/SAC</th>
+                                <th style="width: 12%;">Qty</th>
+                                <th style="width: 15%;">Rate (₹)</th>
+                                <th style="width: 13%;">Total (₹)</th>
+                                <th style="width: 5%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTableBody">
+                            <!-- Dynamic Item Rows -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -727,7 +942,7 @@
 
     </div>
 
-    <!-- ULTRA-PROFESSIONAL PRINTABLE A4 GST INVOICE LAYOUT -->
+    <!-- PRINTABLE A4 GST INVOICE LAYOUT -->
     <div id="printableInvoice">
         <!-- Header -->
         <div class="prt-header">
@@ -852,12 +1067,45 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC WITH AUTHENTICATION & RESPONSIVE CALCS -->
     <script>
         let itemsCount = 0;
 
+        // AUTHENTICATION LOGIC (Username: admin, Password: 9842186217)
+        function checkAuth() {
+            const isAuth = sessionStorage.getItem('nellai_cctv_auth');
+            const overlay = document.getElementById('loginOverlay');
+            if (isAuth === 'true') {
+                overlay.style.display = 'none';
+            } else {
+                overlay.style.display = 'flex';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUser').value.trim();
+            const p = document.getElementById('loginPass').value.trim();
+            const err = document.getElementById('loginErrorMsg');
+
+            if (u === 'admin' && p === '9842186217') {
+                sessionStorage.setItem('nellai_cctv_auth', 'true');
+                err.style.display = 'none';
+                document.getElementById('loginOverlay').style.display = 'none';
+            } else {
+                err.style.display = 'block';
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('nellai_cctv_auth');
+            location.reload();
+        }
+
         // Initialize App & Load History
         window.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+
             // Set current date
             const today = new Date().toLocaleDateString('en-IN');
             document.getElementById('invDate').value = today;
