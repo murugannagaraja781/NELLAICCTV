@@ -327,7 +327,9 @@
             font-size: 1rem;
         }
 
-        /* Printable Invoice Styling (A4 Format) */
+        /* -------------------------------------------------------------
+           ULTRA-PROFESSIONAL A4 PRINTABLE TAX INVOICE FORMAT
+           ------------------------------------------------------------- */
         #printableInvoice {
             display: none;
         }
@@ -346,36 +348,202 @@
             #printableInvoice {
                 display: block !important;
                 width: 100%;
-                max-width: 800px;
+                max-width: 850px;
                 margin: 0 auto;
-                padding: 20px;
+                padding: 30px;
                 background: white;
-                color: #000;
-                font-family: Arial, sans-serif;
+                color: #0F172A;
+                font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+                box-sizing: border-box;
             }
 
-            .inv-print-header {
+            .prt-header {
                 display: flex;
                 justify-content: space-between;
-                border-bottom: 2px solid #FF6B00;
-                padding-bottom: 14px;
+                align-items: flex-start;
+                border-bottom: 3px solid #1B2A4A;
+                padding-bottom: 16px;
                 margin-bottom: 20px;
             }
 
-            .inv-print-table {
+            .prt-brand-col {
+                width: 60%;
+            }
+
+            .prt-brand-logo {
+                width: 85px;
+                height: 85px;
+                object-fit: contain;
+                margin-bottom: 8px;
+            }
+
+            .prt-title {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 900;
+                color: #1B2A4A;
+                margin: 0;
+                line-height: 1.1;
+            }
+
+            .prt-tagline {
+                font-size: 0.85rem;
+                color: #FF6B00;
+                font-weight: 800;
+                margin-top: 2px;
+            }
+
+            .prt-company-details {
+                font-size: 0.82rem;
+                color: #475569;
+                line-height: 1.5;
+                margin-top: 8px;
+            }
+
+            .prt-inv-box {
+                width: 38%;
+                background: #F8FAFC;
+                border: 2px solid #CBD5E1;
+                border-radius: 12px;
+                padding: 14px 16px;
+                text-align: right;
+            }
+
+            .prt-inv-heading {
+                font-family: 'Outfit', sans-serif;
+                font-size: 1.6rem;
+                font-weight: 900;
+                color: #1B2A4A;
+                margin-bottom: 8px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                border-bottom: 2px solid #FF6B00;
+                padding-bottom: 4px;
+            }
+
+            .prt-inv-meta {
+                font-size: 0.85rem;
+                line-height: 1.6;
+                color: #334155;
+            }
+
+            .prt-bill-grid {
+                display: flex;
+                gap: 16px;
+                margin-bottom: 20px;
+            }
+
+            .prt-bill-card {
+                flex: 1;
+                background: #F1F5F9;
+                border-left: 4px solid #FF6B00;
+                padding: 12px 16px;
+                border-radius: 8px;
+            }
+
+            .prt-bill-title {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                font-weight: 800;
+                color: #64748B;
+                margin-bottom: 4px;
+            }
+
+            .prt-cust-name {
+                font-size: 1.1rem;
+                font-weight: 900;
+                color: #0F172A;
+            }
+
+            .prt-cust-detail {
+                font-size: 0.85rem;
+                color: #475569;
+                margin-top: 2px;
+            }
+
+            .prt-table {
                 width: 100%;
                 border-collapse: collapse;
-                margin: 20px 0;
+                margin-bottom: 20px;
             }
 
-            .inv-print-table th, .inv-print-table td {
-                border: 1px solid #ddd;
-                padding: 10px;
+            .prt-table th {
+                background: #1B2A4A;
+                color: white;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                padding: 10px 12px;
                 text-align: left;
+                border: 1px solid #1B2A4A;
             }
 
-            .inv-print-table th {
-                background: #f1f5f9;
+            .prt-table td {
+                padding: 10px 12px;
+                border: 1px solid #E2E8F0;
+                font-size: 0.85rem;
+                color: #1E293B;
+            }
+
+            .prt-table tr:nth-child(even) {
+                background: #F8FAFC;
+            }
+
+            .prt-footer-grid {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                gap: 20px;
+            }
+
+            .prt-bank-box {
+                width: 55%;
+                border: 1px dashed #CBD5E1;
+                border-radius: 10px;
+                padding: 12px 16px;
+                background: #FAF5FF;
+            }
+
+            .prt-totals-box {
+                width: 40%;
+                text-align: right;
+            }
+
+            .prt-totals-row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.9rem;
+                padding: 4px 0;
+                color: #475569;
+            }
+
+            .prt-grand-total-row {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.25rem;
+                font-weight: 900;
+                color: #FF6B00;
+                border-top: 2px solid #FF6B00;
+                padding-top: 8px;
+                margin-top: 6px;
+            }
+
+            .prt-sign-area {
+                margin-top: 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+
+            .prt-stamp-box {
+                width: 150px;
+                height: 70px;
+                border: 1px dashed #94A3B8;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #94A3B8;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -389,14 +557,14 @@
             <div class="brand-info">
                 <div class="devotional-badge">✨ திருச்செந்தூர் முருகன் துணை ✨</div>
                 <h1>NELLAI <span>CCTV</span> BILLING APP</h1>
-                <p style="font-size: 0.85rem; color: var(--text-secondary);">Proprietor: ARUMUGA NAINAR | GST & Retail Billing Software</p>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Proprietor: ARUMUGA NAINAR | Corporate GST Invoice Software</p>
             </div>
         </div>
 
         <div class="header-actions">
             <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-house"></i> Main Website</a>
             <a href="visiting_card.html" class="btn btn-secondary"><i class="fa-solid fa-id-card"></i> Visiting Cards</a>
-            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Invoice (A4)</button>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Corporate Invoice (A4)</button>
         </div>
     </header>
 
@@ -422,11 +590,23 @@
                     </div>
                     <div class="form-group">
                         <label>Installation Address / City</label>
-                        <input type="text" id="custAddress" class="form-control" placeholder="e.g. Pallikaranai, Chennai / Tenkasi" value="Pallikaranai, Chennai">
+                        <input type="text" id="custAddress" class="form-control" placeholder="e.g. Pallikaranai, Chennai / Tenkasi / Tirunelveli" value="Pallikaranai, Chennai">
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Mode</label>
+                        <select id="payMode" class="form-control" onchange="calculateTotals()">
+                            <option value="GPay / PhonePe / UPI">GPay / PhonePe / UPI</option>
+                            <option value="Cash on Delivery">Cash Payment</option>
+                            <option value="Net Banking / NEFT">Net Banking / NEFT</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Invoice Number</label>
                         <input type="text" id="invNumber" class="form-control" value="NCCTV-2026-1001" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Date</label>
+                        <input type="text" id="invDate" class="form-control" value="" readonly>
                     </div>
                 </div>
             </div>
@@ -445,27 +625,28 @@
                     <label style="font-size: 0.8rem; font-weight: 800; color: #60A5FA; text-transform: uppercase; margin-bottom: 6px; display: block;">⚡ Quick Add CCTV Presets:</label>
                     <select id="presetSelect" class="form-control" onchange="addPresetItem(this.value)">
                         <option value="">-- Choose Preset Product/Service --</option>
-                        <option value="Hikvision 4K Dome Camera|3200|1">Hikvision 4K Outdoor Dome Camera (₹3,200)</option>
-                        <option value="CP Plus Full Color Night Vision Camera|2600|1">CP Plus Full Color Night Vision Camera (₹2,600)</option>
-                        <option value="4-Channel Smart DVR Recorder|4500|1">4-Channel Smart DVR Recorder (₹4,500)</option>
-                        <option value="8-Channel NVR Network Recorder|8500|1">8-Channel NVR Network Recorder (₹8,500)</option>
-                        <option value="1 TB Surveillance Hard Disk|3800|1">1 TB Surveillance Hard Disk (₹3,800)</option>
-                        <option value="2 TB High Endurance Hard Disk|5800|1">2 TB High Endurance Hard Disk (₹5,800)</option>
-                        <option value="CCTV Power Supply Unit (12V 5A)|1200|1">CCTV Power Supply Unit 12V 5A (₹1,200)</option>
-                        <option value="3+1 Coaxial CCTV Cable (Meters)|25|90">3+1 Coaxial CCTV Cable (90 meters @ ₹25/m)</option>
-                        <option value="Express Installation & Wiring Labor|1500|1">Express Installation & Wiring Labor (₹1,500)</option>
-                        <option value="Camera Repair & Adapter Replacement|850|1">Camera Repair & Adapter Replacement (₹850)</option>
-                        <option value="Annual Maintenance Contract (AMC) Package|3500|1">Annual Maintenance Contract (AMC) Package (₹3,500)</option>
+                        <option value="Hikvision 4K Outdoor Dome Camera|8525|3200|1">Hikvision 4K Outdoor Dome Camera (₹3,200)</option>
+                        <option value="CP Plus Full Color Night Vision Camera|8525|2600|1">CP Plus Full Color Night Vision Camera (₹2,600)</option>
+                        <option value="4-Channel Smart DVR Recorder|8521|4500|1">4-Channel Smart DVR Recorder (₹4,500)</option>
+                        <option value="8-Channel NVR Network Recorder|8521|8500|1">8-Channel NVR Network Recorder (₹8,500)</option>
+                        <option value="1 TB Surveillance Hard Disk Storage|8471|3800|1">1 TB Surveillance Hard Disk (₹3,800)</option>
+                        <option value="2 TB High Endurance Hard Disk Storage|8471|5800|1">2 TB High Endurance Hard Disk (₹5,800)</option>
+                        <option value="CCTV Power Supply Unit (12V 5A)|8504|1200|1">CCTV Power Supply Unit 12V 5A (₹1,200)</option>
+                        <option value="3+1 Coaxial CCTV Cable (Meters)|8544|25|90">3+1 Coaxial CCTV Cable (90 meters @ ₹25/m)</option>
+                        <option value="Express Installation & Wiring Labor Charge|9987|1500|1">Express Installation & Wiring Labor (₹1,500)</option>
+                        <option value="Camera Repair & Adapter Replacement|9987|850|1">Camera Repair & Adapter Replacement (₹850)</option>
+                        <option value="Annual Maintenance Contract (AMC) Package|9987|3500|1">Annual Maintenance Contract (AMC) Package (₹3,500)</option>
                     </select>
                 </div>
 
                 <table class="items-table">
                     <thead>
                         <tr>
-                            <th style="width: 45%;">Item / Description</th>
-                            <th style="width: 15%;">Qty</th>
-                            <th style="width: 20%;">Rate (₹)</th>
-                            <th style="width: 15%;">Total (₹)</th>
+                            <th style="width: 40%;">Item Description</th>
+                            <th style="width: 15%;">HSN/SAC</th>
+                            <th style="width: 12%;">Qty</th>
+                            <th style="width: 15%;">Rate (₹)</th>
+                            <th style="width: 13%;">Total (₹)</th>
                             <th style="width: 5%;"></th>
                         </tr>
                     </thead>
@@ -493,14 +674,19 @@
                     <div class="form-group" style="margin: 0;">
                         <label style="font-size: 0.75rem;">GST Tax Rate (%)</label>
                         <select id="gstSelect" class="form-control" onchange="calculateTotals()" style="padding: 8px;">
-                            <option value="0">0% (No GST / Cash Bill)</option>
+                            <option value="0">0% (Cash Bill / Retail)</option>
                             <option value="18" selected>18% GST (9% CGST + 9% SGST)</option>
                         </select>
                     </div>
 
                     <div class="summary-row">
-                        <span>GST Amount:</span>
-                        <span id="gstAmountTxt">₹0</span>
+                        <span>CGST (9%):</span>
+                        <span id="cgstAmountTxt">₹0</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>SGST (9%):</span>
+                        <span id="sgstAmountTxt">₹0</span>
                     </div>
 
                     <div class="form-group" style="margin: 0;">
@@ -541,70 +727,126 @@
 
     </div>
 
-    <!-- PRINTABLE A4 GST INVOICE LAYOUT -->
+    <!-- ULTRA-PROFESSIONAL PRINTABLE A4 GST INVOICE LAYOUT -->
     <div id="printableInvoice">
-        <div class="inv-print-header">
-            <div>
-                <img src="assets/logo.png" style="width: 80px; height: 80px; object-fit: contain;">
-                <h2 style="margin: 6px 0 0 0; color: #1B2A4A;">NELLAI CCTV & SECURITY SOLUTIONS</h2>
-                <div style="font-size: 0.85rem; color: #FF6B00; font-weight: bold;">"Your Safety, Our Priority."</div>
-                <div style="font-size: 0.85rem; color: #555; margin-top: 4px;">
-                    Proprietor: ARUMUGA NAINAR | Mobile: +91 98421 86217<br>
-                    254, Mylai Balaji Nagar, 1st Part, Pallikaranai, Chennai - 600100<br>
-                    Email: nellaicctvsolutions@gmail.com | Website: www.nellaicctv.in
+        <!-- Header -->
+        <div class="prt-header">
+            <div class="prt-brand-col">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="assets/logo.png" class="prt-brand-logo" alt="Logo">
+                    <div>
+                        <div style="font-family: 'Mukta Malar'; font-size: 0.85rem; font-weight: bold; color: #B8860B;">✨ திருச்செந்தூர் முருகன் துணை ✨</div>
+                        <h1 class="prt-title">NELLAI CCTV</h1>
+                        <div style="font-size: 0.85rem; font-weight: 800; color: #1B2A4A;">& SECURITY SOLUTIONS</div>
+                        <div class="prt-tagline">"Your Safety, Our Priority."</div>
+                    </div>
+                </div>
+                <div class="prt-company-details">
+                    <strong>Proprietor:</strong> ARUMUGA NAINAR | <strong>Mobile:</strong> +91 98421 86217<br>
+                    <strong>Address:</strong> 254, Mylai Balaji Nagar, 1st Part, Pallikaranai, Chennai – 600100<br>
+                    <strong>Email:</strong> nellaicctvsolutions@gmail.com | <strong>Website:</strong> www.nellaicctv.in<br>
+                    <strong>Service Coverage:</strong> Chennai | Tenkasi | Tirunelveli
                 </div>
             </div>
-            <div style="text-align: right;">
-                <h1 style="color: #1B2A4A; margin: 0; font-size: 2rem;">TAX INVOICE</h1>
-                <div style="font-size: 0.9rem; margin-top: 10px;">
+
+            <div class="prt-inv-box">
+                <div class="prt-inv-heading">TAX INVOICE</div>
+                <div class="prt-inv-meta">
                     <strong>Invoice No:</strong> <span id="prtInvNum"></span><br>
                     <strong>Date:</strong> <span id="prtInvDate"></span><br>
-                    <strong>Service Area:</strong> Chennai / Tenkasi / Tirunelveli
+                    <strong>State Code:</strong> 33 (Tamil Nadu)<br>
+                    <strong>Payment Mode:</strong> <span id="prtPayMode">GPay / PhonePe</span>
                 </div>
             </div>
         </div>
 
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
-            <strong style="color: #1B2A4A;">Billed To (Customer Details):</strong>
-            <div id="prtCustName" style="font-size: 1.1rem; font-weight: bold; margin-top: 4px;"></div>
-            <div id="prtCustPhone"></div>
-            <div id="prtCustAddr"></div>
+        <!-- Customer Billing Grid -->
+        <div class="prt-bill-grid">
+            <div class="prt-bill-card">
+                <div class="prt-bill-title">BILLED TO (CUSTOMER DETAILS)</div>
+                <div class="prt-cust-name" id="prtCustName"></div>
+                <div class="prt-cust-detail" id="prtCustPhone"></div>
+                <div class="prt-cust-detail" id="prtCustAddr"></div>
+            </div>
+            <div class="prt-bill-card">
+                <div class="prt-bill-title">INSTALLATION & SERVICE LOCATION</div>
+                <div class="prt-cust-detail"><strong>Service Center:</strong> NELLAI CCTV Express Service</div>
+                <div class="prt-cust-detail"><strong>Technician Lead:</strong> ARUMUGA NAINAR (+91 98421 86217)</div>
+                <div class="prt-cust-detail"><strong>Warranty Term:</strong> 2-Year Manufacturer Warranty</div>
+            </div>
         </div>
 
-        <table class="inv-print-table">
+        <!-- Itemized Products & Services Table -->
+        <table class="prt-table">
             <thead>
                 <tr>
-                    <th style="width: 10%;">S.No</th>
-                    <th style="width: 50%;">Item Description</th>
-                    <th style="width: 10%;">Qty</th>
-                    <th style="width: 15%;">Rate (₹)</th>
-                    <th style="width: 15%;">Amount (₹)</th>
+                    <th style="width: 8%;">S.No</th>
+                    <th style="width: 44%;">Item / Service Description</th>
+                    <th style="width: 12%;">HSN/SAC</th>
+                    <th style="width: 8%;">Qty</th>
+                    <th style="width: 14%;">Rate (₹)</th>
+                    <th style="width: 14%;">Amount (₹)</th>
                 </tr>
             </thead>
             <tbody id="prtItemsBody">
             </tbody>
         </table>
 
-        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-            <div style="width: 55%; font-size: 0.85rem; color: #555;">
+        <!-- Footer Totals & Bank Payment Details -->
+        <div class="prt-footer-grid">
+            <div class="prt-bank-box">
+                <strong style="color: #6B21A8; font-size: 0.9rem;">💳 BANK & UPI PAYMENT DETAILS:</strong>
+                <div style="font-size: 0.82rem; color: #475569; margin-top: 4px; line-height: 1.5;">
+                    <strong>GPay / PhonePe / Paytm UPI ID:</strong> <span style="font-weight: bold; color: #1E293B;">9842186217@ybl</span><br>
+                    <strong>Account Name:</strong> NELLAI CCTV & SECURITY SOLUTIONS<br>
+                    <strong>Contact Phone:</strong> +91 98421 86217
+                </div>
+            </div>
+
+            <div class="prt-totals-box">
+                <div class="prt-totals-row">
+                    <span>Taxable Subtotal:</span>
+                    <span id="prtSubtotal">₹0</span>
+                </div>
+                <div class="prt-totals-row">
+                    <span>CGST (9%):</span>
+                    <span id="prtCgst">₹0</span>
+                </div>
+                <div class="prt-totals-row">
+                    <span>SGST (9%):</span>
+                    <span id="prtSgst">₹0</span>
+                </div>
+                <div class="prt-totals-row">
+                    <span>Discount:</span>
+                    <span id="prtDiscount">₹0</span>
+                </div>
+                <div class="prt-grand-total-row">
+                    <span>Net Payable:</span>
+                    <span id="prtGrandTotal">₹0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms & Signature Area -->
+        <div class="prt-sign-area">
+            <div style="width: 55%; font-size: 0.8rem; color: #64748B;">
                 <strong>Terms & Conditions:</strong>
-                <ol style="padding-left: 16px; margin-top: 6px;">
-                    <li>Goods once sold will not be taken back unless manufacturing defect.</li>
-                    <li>2-Year Manufacturer Warranty applicable on Hikvision/CP Plus cameras.</li>
-                    <li>Payment due upon completion of CCTV installation.</li>
+                <ol style="padding-left: 14px; margin-top: 4px; line-height: 1.4;">
+                    <li>Goods once sold carry 2-Year Manufacturer Warranty against technical defects.</li>
+                    <li>24/7 Mobile Smartphone Viewing setup requires active internet connection.</li>
+                    <li>Payment due upon completion of CCTV installation or repair service.</li>
                 </ol>
             </div>
-            <div style="width: 40%; text-align: right;">
-                <div style="font-size: 0.95rem; margin-bottom: 6px;">Subtotal: <span id="prtSubtotal"></span></div>
-                <div style="font-size: 0.95rem; margin-bottom: 6px;">GST Tax: <span id="prtGst"></span></div>
-                <div style="font-size: 0.95rem; margin-bottom: 6px;">Discount: <span id="prtDiscount"></span></div>
-                <div style="font-size: 1.3rem; font-weight: bold; color: #FF6B00; border-top: 2px solid #FF6B00; padding-top: 6px;">
-                    Net Total: <span id="prtGrandTotal"></span>
+
+            <div style="text-align: right;">
+                <div class="prt-stamp-box" style="margin-left: auto; margin-bottom: 8px;">
+                    [ OFFICIAL SEAL ]
                 </div>
-                <div style="margin-top: 40px; font-weight: bold; color: #1B2A4A;">
-                    For NELLAI CCTV & SECURITY SOLUTIONS<br><br><br>
+                <div style="font-size: 0.85rem; font-weight: bold; color: #1B2A4A;">
+                    For NELLAI CCTV & SECURITY SOLUTIONS<br><br>
                     ___________________________<br>
-                    (Authorized Signatory)
+                    <strong>ARUMUGA NAINAR</strong><br>
+                    (Proprietor / Authorized Signatory)
                 </div>
             </div>
         </div>
@@ -618,6 +860,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             // Set current date
             const today = new Date().toLocaleDateString('en-IN');
+            document.getElementById('invDate').value = today;
             document.getElementById('prtInvDate').innerText = today;
 
             // Generate unique invoice number based on timestamp
@@ -625,22 +868,23 @@
             document.getElementById('invNumber').value = `NCCTV-2026-${randomNum}`;
 
             // Add default initial items
-            addItemRow("Hikvision 4K Outdoor Dome Camera", 2, 3200);
-            addItemRow("4-Channel Smart DVR Recorder", 1, 4500);
-            addItemRow("1 TB Surveillance Hard Disk", 1, 3800);
-            addItemRow("Express Installation & Wiring Labor", 1, 1500);
+            addItemRow("Hikvision 4K Outdoor Dome Camera", "8525", 2, 3200);
+            addItemRow("4-Channel Smart DVR Recorder", "8521", 1, 4500);
+            addItemRow("1 TB Surveillance Hard Disk Storage", "8471", 1, 3800);
+            addItemRow("Express Installation & Wiring Labor Charge", "9987", 1, 1500);
 
             loadSavedInvoices();
         });
 
         // Add a new row to items table
-        function addItemRow(name = '', qty = 1, rate = 0) {
+        function addItemRow(name = '', hsn = '8525', qty = 1, rate = 0) {
             itemsCount++;
             const tbody = document.getElementById('itemsTableBody');
             const row = document.createElement('tr');
             row.id = `itemRow_${itemsCount}`;
             row.innerHTML = `
                 <td><input type="text" class="form-control item-name" value="${name}" placeholder="Item Name" oninput="calculateTotals()"></td>
+                <td><input type="text" class="form-control item-hsn" value="${hsn}" placeholder="HSN/SAC" oninput="calculateTotals()"></td>
                 <td><input type="number" class="form-control item-qty" value="${qty}" min="1" oninput="calculateTotals()"></td>
                 <td><input type="number" class="form-control item-rate" value="${rate}" min="0" oninput="calculateTotals()"></td>
                 <td style="font-weight: 800; color: var(--success);"><span class="item-amount">₹0</span></td>
@@ -653,8 +897,8 @@
         // Add item from preset dropdown
         function addPresetItem(val) {
             if (!val) return;
-            const [name, rate, qty] = val.split('|');
-            addItemRow(name, parseInt(qty), parseInt(rate));
+            const [name, hsn, rate, qty] = val.split('|');
+            addItemRow(name, hsn, parseInt(qty), parseInt(rate));
             document.getElementById('presetSelect').value = '';
         }
 
@@ -667,7 +911,7 @@
             }
         }
 
-        // Calculate Subtotal, GST, Discount, and Grand Total
+        // Calculate Subtotal, CGST, SGST, Discount, and Grand Total
         function calculateTotals() {
             const rows = document.querySelectorAll('#itemsTableBody tr');
             let subtotal = 0;
@@ -682,21 +926,28 @@
             });
 
             const gstRate = parseFloat(document.getElementById('gstSelect').value) || 0;
-            const gstAmount = (subtotal * gstRate) / 100;
+            const totalGstAmount = (subtotal * gstRate) / 100;
+            const cgstAmount = totalGstAmount / 2;
+            const sgstAmount = totalGstAmount / 2;
+
             const discount = parseFloat(document.getElementById('discountInput').value) || 0;
-            const grandTotal = subtotal + gstAmount - discount;
+            const grandTotal = subtotal + totalGstAmount - discount;
 
             document.getElementById('subTotalTxt').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
-            document.getElementById('gstAmountTxt').innerText = `₹${gstAmount.toLocaleString('en-IN')}`;
+            document.getElementById('cgstAmountTxt').innerText = `₹${cgstAmount.toLocaleString('en-IN')}`;
+            document.getElementById('sgstAmountTxt').innerText = `₹${sgstAmount.toLocaleString('en-IN')}`;
             document.getElementById('grandTotalTxt').innerText = `₹${grandTotal.toLocaleString('en-IN')}`;
 
-            // Update Printable Invoice
+            // Update Printable Corporate Invoice
             document.getElementById('prtInvNum').innerText = document.getElementById('invNumber').value;
+            document.getElementById('prtPayMode').innerText = document.getElementById('payMode').value;
             document.getElementById('prtCustName').innerText = document.getElementById('custName').value;
             document.getElementById('prtCustPhone').innerText = `Phone: +91 ${document.getElementById('custPhone').value}`;
             document.getElementById('prtCustAddr').innerText = `Address: ${document.getElementById('custAddress').value}`;
+
             document.getElementById('prtSubtotal').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
-            document.getElementById('prtGst').innerText = `₹${gstAmount.toLocaleString('en-IN')}`;
+            document.getElementById('prtCgst').innerText = `₹${cgstAmount.toLocaleString('en-IN')}`;
+            document.getElementById('prtSgst').innerText = `₹${sgstAmount.toLocaleString('en-IN')}`;
             document.getElementById('prtDiscount').innerText = `₹${discount.toLocaleString('en-IN')}`;
             document.getElementById('prtGrandTotal').innerText = `₹${grandTotal.toLocaleString('en-IN')}`;
 
@@ -706,6 +957,7 @@
             let sno = 1;
             rows.forEach(r => {
                 const name = r.querySelector('.item-name').value;
+                const hsn = r.querySelector('.item-hsn').value || '8525';
                 const qty = parseFloat(r.querySelector('.item-qty').value) || 0;
                 const rate = parseFloat(r.querySelector('.item-rate').value) || 0;
                 const amount = qty * rate;
@@ -714,6 +966,7 @@
                         <tr>
                             <td>${sno++}</td>
                             <td>${name}</td>
+                            <td>${hsn}</td>
                             <td>${qty}</td>
                             <td>₹${rate.toLocaleString('en-IN')}</td>
                             <td>₹${amount.toLocaleString('en-IN')}</td>
@@ -732,7 +985,6 @@
             const date = new Date().toLocaleDateString('en-IN');
 
             let history = JSON.parse(localStorage.getItem('nellai_cctv_invoices') || '[]');
-            // Avoid duplicates
             history = history.filter(i => i.invNum !== invNum);
             history.unshift({ invNum, name, phone, total, date });
 
@@ -769,6 +1021,7 @@
         function buildWhatsAppMessage() {
             const name = document.getElementById('custName').value;
             const invNum = document.getElementById('invNumber').value;
+            const payMode = document.getElementById('payMode').value;
             const rows = document.querySelectorAll('#itemsTableBody tr');
             let itemText = '';
 
@@ -783,23 +1036,27 @@
             });
 
             const subtotal = document.getElementById('subTotalTxt').innerText;
-            const gst = document.getElementById('gstAmountTxt').innerText;
+            const cgst = document.getElementById('cgstAmountTxt').innerText;
+            const sgst = document.getElementById('sgstAmountTxt').innerText;
             const discount = document.getElementById('discountInput').value;
             const grandTotal = document.getElementById('grandTotalTxt').innerText;
 
             return encodeURIComponent(
                 `🧾 *NELLAI CCTV & SECURITY SOLUTIONS*\n` +
                 `✨ _"Your Safety, Our Priority."_\n\n` +
-                `*OFFICIAL GST INVOICE RECEIPT*\n` +
+                `*OFFICIAL CORPORATE GST INVOICE*\n` +
                 `*Invoice No:* ${invNum}\n` +
                 `*Customer Name:* ${name}\n` +
+                `*Payment Mode:* ${payMode}\n` +
                 `----------------------------------------\n` +
-                `*ITEMIZED BILL:* \n${itemText}` +
+                `*ITEMIZED BILL DETAILS:* \n${itemText}` +
                 `----------------------------------------\n` +
-                `*Subtotal:* ${subtotal}\n` +
-                `*GST Tax:* ${gst}\n` +
+                `*Taxable Subtotal:* ${subtotal}\n` +
+                `*CGST (9%):* ${cgst}\n` +
+                `*SGST (9%):* ${sgst}\n` +
                 `*Discount:* ₹${discount}\n` +
                 `*NET TOTAL PAYABLE:* *${grandTotal}*\n\n` +
+                `💳 *GPay / PhonePe UPI:* 9842186217@ybl\n` +
                 `📍 Address: 254, Mylai Balaji Nagar, Pallikaranai, Chennai - 600100\n` +
                 `📞 Call: +91 98421 86217 | 🌐 Website: https://nellaicctv.in\n` +
                 `Thank you for choosing NELLAI CCTV!`
