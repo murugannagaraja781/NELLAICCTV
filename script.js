@@ -175,5 +175,20 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(`https://wa.me/919842186217?text=${text}`, '_blank');
         });
     }
+
+    // 5. Visual FAQ Accordion Toggle Handler
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
 });
 

@@ -1368,3 +1368,124 @@ body {
         font-size: 1.05rem;
     }
 }
+
+/* -------------------------------------------------------------
+   MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & WhatsApp)
+   ------------------------------------------------------------- */
+.mobile-fixed-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(7, 10, 18, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 16px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-bar-container {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.mobile-bar-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.mobile-bar-call {
+    background: linear-gradient(135deg, #FF6B00 0%, #E05D00 100%);
+}
+
+.mobile-bar-wa {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+@media (max-width: 768px) {
+    .mobile-fixed-bar {
+        display: block;
+    }
+    body {
+        padding-bottom: 70px;
+    }
+}
+
+/* -------------------------------------------------------------
+   FAQ ACCORDION SECTION STYLING
+   ------------------------------------------------------------- */
+.faq-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--bg-dark);
+}
+
+.faq-accordion {
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.faq-question {
+    padding: 20px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.faq-question i {
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active {
+    border-color: var(--primary);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 24px 20px 24px;
+    max-height: 300px;
+}
+
