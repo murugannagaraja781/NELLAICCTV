@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NELLAI CCTV - GST Billing & Invoice App</title>
-    <!-- App Launcher Icon -->
+    <!-- App Launcher Icon & PWA Manifest -->
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF6B00">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="NCCTV Bill">
     
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +38,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 20px 80px 20px;
         }
 
         /* -------------------------------------------------------------
@@ -75,47 +81,20 @@
             position: relative;
         }
 
-        @media (max-width: 480px) {
-            .login-box {
-                padding: 24px 18px;
-                border-radius: 20px;
-            }
-            .login-logo {
-                width: 60px !important;
-                height: 60px !important;
-                margin-bottom: 8px !important;
-            }
-            .login-title {
-                font-size: 1.35rem !important;
-            }
-            .login-subtitle {
-                font-size: 0.78rem !important;
-                margin-bottom: 18px !important;
-            }
-            .login-control {
-                font-size: 16px !important; /* Prevents auto-zoom on mobile iOS */
-                padding: 12px 12px 12px 40px !important;
-            }
-            .btn-login-submit {
-                padding: 12px !important;
-                font-size: 1rem !important;
-            }
-        }
-
         .login-logo {
-            width: 80px;
-            height: 80px;
+            width: 75px;
+            height: 75px;
             object-fit: contain;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.5));
         }
 
         .login-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .login-title span {
@@ -123,9 +102,9 @@
         }
 
         .login-subtitle {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .login-form-group {
@@ -133,11 +112,11 @@
             flex-direction: column;
             gap: 6px;
             text-align: left;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .login-form-group label {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 800;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -161,9 +140,9 @@
             background: rgba(7, 10, 18, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 14px 14px 14px 44px;
+            padding: 12px 12px 12px 42px;
             color: white;
-            font-size: 1rem;
+            font-size: 16px; /* Prevents mobile iOS auto-zoom */
             outline: none;
             transition: 0.2s ease;
         }
@@ -181,7 +160,7 @@
             border-radius: 10px;
             font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: none;
         }
 
@@ -191,7 +170,7 @@
             color: white;
             padding: 14px;
             border-radius: 12px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 800;
             border: none;
             cursor: pointer;
@@ -199,43 +178,40 @@
             transition: 0.2s ease;
         }
 
-        .btn-login-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 107, 0, 0.6);
-        }
-
-        /* App Main Header */
+        /* -------------------------------------------------------------
+           NATIVE MOBILE APP TOP BAR & NAVIGATION
+           ------------------------------------------------------------- */
         .app-header {
             max-width: 1100px;
-            margin: 0 auto 24px auto;
-            background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(7,10,18,0.95) 100%);
+            margin: 0 auto 20px auto;
+            background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(7,10,18,0.98) 100%);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 20px 24px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .app-logo {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(0, 102, 255, 0.5));
         }
 
         .brand-info h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: white;
             letter-spacing: 0.5px;
@@ -250,30 +226,30 @@
             color: #FFD700;
             font-family: 'Mukta Malar', sans-serif;
             font-weight: 800;
-            font-size: 0.85rem;
-            padding: 3px 10px;
+            font-size: 0.8rem;
+            padding: 2px 8px;
             border-radius: 6px;
             display: inline-block;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             border: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .header-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 10px 18px;
+            padding: 9px 16px;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
             transition: all 0.2s ease;
         }
@@ -302,40 +278,35 @@
             border: 1px solid rgba(255, 59, 48, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        /* Main Workspace Container */
+        /* Workspace Grid */
         .workspace {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 24px;
+            gap: 20px;
         }
 
         .card-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 24px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .panel-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
 
         .panel-title i {
@@ -346,31 +317,31 @@
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 12px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            margin-bottom: 12px;
+            gap: 4px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-size: 0.75rem;
+            font-weight: 800;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .form-control {
-            background: rgba(7, 10, 18, 0.6);
+            background: rgba(7, 10, 18, 0.7);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 12px 14px;
+            padding: 11px 12px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 16px; /* Prevents auto-zoom on mobile */
             outline: none;
             transition: 0.2s ease;
         }
@@ -380,7 +351,7 @@
             box-shadow: 0 0 10px rgba(0, 102, 255, 0.3);
         }
 
-        /* Billing Items Table & Mobile Wrapper */
+        /* Table & Scroll */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -390,22 +361,22 @@
         .items-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            min-width: 500px; /* Ensures table scrolls cleanly on mobile */
+            margin-top: 8px;
+            min-width: 480px;
         }
 
         .items-table th {
             text-align: left;
-            padding: 12px 10px;
+            padding: 10px 8px;
             background: rgba(255, 255, 255, 0.04);
             color: var(--text-secondary);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             border-bottom: 1px solid var(--border-color);
         }
 
         .items-table td {
-            padding: 10px 8px;
+            padding: 8px 6px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
             vertical-align: middle;
         }
@@ -423,36 +394,31 @@
             justify-content: center;
         }
 
-        .btn-del:hover {
-            background: #FF3B30;
-            color: white;
-        }
-
         /* Summary Calculations */
         .summary-box {
             background: rgba(7, 10, 18, 0.8);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 18px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
         }
 
         .summary-row.total {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 900;
             color: var(--success);
             border-top: 1px solid var(--border-color);
-            padding-top: 12px;
-            margin-top: 6px;
+            padding-top: 10px;
+            margin-top: 4px;
         }
 
         /* History List */
@@ -474,25 +440,54 @@
             align-items: center;
         }
 
-        .history-info h4 {
-            font-size: 0.9rem;
-            color: white;
-        }
-
-        .history-info p {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-        }
-
-        .history-price {
-            font-weight: 800;
-            color: var(--success);
-            font-size: 0.95rem;
-        }
-
         /* -------------------------------------------------------------
-           100% MOBILE RESPONSIVE MEDIA QUERIES (@media max-width 768px & 480px)
+           NATIVE MOBILE APP BOTTOM TAB NAVIGATION BAR
            ------------------------------------------------------------- */
+        .mobile-app-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 9999;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.8);
+        }
+
+        .app-tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-decoration: none;
+            width: 25%;
+            height: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .app-tab-item i {
+            font-size: 1.2rem;
+        }
+
+        .app-tab-item.active {
+            color: var(--primary-orange);
+        }
+
+        .app-tab-item.active i {
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Screen App View Switches */
         @media (max-width: 992px) {
             .workspace {
                 grid-template-columns: 1fr;
@@ -501,31 +496,20 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 12px 10px;
+                padding: 10px 10px 75px 10px;
+            }
+
+            .mobile-app-bottom-bar {
+                display: flex;
             }
 
             .app-header {
-                padding: 16px;
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
+                padding: 12px 16px;
+                border-radius: 16px;
             }
 
-            .brand-box {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .header-actions {
-                justify-content: center;
-                width: 100%;
-            }
-
-            .header-actions .btn {
-                flex: 1;
-                justify-content: center;
-                font-size: 0.85rem;
-                padding: 10px;
+            .header-actions .btn-secondary {
+                display: none; /* Hide non-essential buttons on tiny mobile screen top bar */
             }
 
             .card-panel {
@@ -535,22 +519,6 @@
 
             .form-grid {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .brand-info h1 {
-                font-size: 1.3rem;
-            }
-            .app-logo {
-                width: 50px;
-                height: 50px;
-            }
-            .header-actions {
-                flex-direction: column;
-            }
-            .btn {
-                width: 100%;
             }
         }
 
@@ -566,7 +534,7 @@
                 padding: 0;
             }
 
-            .login-overlay, .app-header, .workspace {
+            .login-overlay, .app-header, .workspace, .mobile-app-bottom-bar {
                 display: none !important;
             }
 
@@ -799,14 +767,14 @@
             <div class="brand-info">
                 <div class="devotional-badge">✨ திருச்செந்தூர் முருகன் துணை ✨</div>
                 <h1>NELLAI <span>CCTV</span> BILLING APP</h1>
-                <p style="font-size: 0.85rem; color: var(--text-secondary);">Proprietor: ARUMUGA NAINAR | Corporate GST Invoice Software</p>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);">Proprietor: ARUMUGA NAINAR | Mobile App</p>
             </div>
         </div>
 
         <div class="header-actions">
-            <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-house"></i> Main Website</a>
-            <a href="visiting_card.html" class="btn btn-secondary"><i class="fa-solid fa-id-card"></i> Visiting Cards</a>
-            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Invoice (A4)</button>
+            <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-house"></i> Website</a>
+            <a href="visiting_card.html" class="btn btn-secondary"><i class="fa-solid fa-id-card"></i> Cards</a>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print (A4)</button>
             <button class="btn btn-danger" onclick="handleLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </div>
     </header>
@@ -817,7 +785,7 @@
         <!-- LEFT PANEL: INVOICE FORM & ITEMS -->
         <div>
             <!-- Customer Details Card -->
-            <div class="card-panel">
+            <div class="card-panel" id="panelCustomer">
                 <div class="panel-title">
                     <i class="fa-solid fa-user-tag"></i> Customer & Invoice Info
                 </div>
@@ -855,17 +823,17 @@
             </div>
 
             <!-- Billing Items Card -->
-            <div class="card-panel">
+            <div class="card-panel" id="panelItems">
                 <div class="panel-title" style="justify-content: space-between;">
                     <div><i class="fa-solid fa-cart-shopping"></i> Product & Service Items</div>
-                    <button class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.85rem;" onclick="addItemRow()">
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="addItemRow()">
                         <i class="fa-solid fa-plus"></i> Add Item
                     </button>
                 </div>
 
                 <!-- Quick CCTV Item Preset Selector -->
                 <div style="margin-bottom: 16px; background: rgba(0,102,255,0.1); padding: 12px; border-radius: 10px; border: 1px dashed rgba(0,102,255,0.3);">
-                    <label style="font-size: 0.8rem; font-weight: 800; color: #60A5FA; text-transform: uppercase; margin-bottom: 6px; display: block;">⚡ Quick Add CCTV Presets:</label>
+                    <label style="font-size: 0.78rem; font-weight: 800; color: #60A5FA; text-transform: uppercase; margin-bottom: 6px; display: block;">⚡ Quick Add CCTV Presets:</label>
                     <select id="presetSelect" class="form-control" onchange="addPresetItem(this.value)">
                         <option value="">-- Choose Preset Product/Service --</option>
                         <option value="Hikvision 4K Outdoor Dome Camera|8525|3200|1">Hikvision 4K Outdoor Dome Camera (₹3,200)</option>
@@ -905,7 +873,7 @@
         <!-- RIGHT PANEL: CALCULATIONS, WHATSAPP & HISTORY -->
         <div>
             <!-- Total Summary Card -->
-            <div class="card-panel">
+            <div class="card-panel" id="panelSummary">
                 <div class="panel-title">
                     <i class="fa-solid fa-calculator"></i> Total & Payment Summary
                 </div>
@@ -958,7 +926,7 @@
             </div>
 
             <!-- Saved Invoice History Card (LocalStorage) -->
-            <div class="card-panel">
+            <div class="card-panel" id="panelHistory">
                 <div class="panel-title" style="justify-content: space-between;">
                     <div><i class="fa-solid fa-clock-rotate-left"></i> Invoice History</div>
                     <span id="savedCountBadge" style="background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 50px; font-size: 0.8rem;">0 Saved</span>
@@ -971,6 +939,26 @@
         </div>
 
     </div>
+
+    <!-- NATIVE MOBILE APP BOTTOM TAB NAVIGATION BAR -->
+    <nav class="mobile-app-bottom-bar">
+        <div class="app-tab-item active" onclick="switchMobileTab('bill')">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>New Bill</span>
+        </div>
+        <div class="app-tab-item" onclick="switchMobileTab('presets')">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Presets</span>
+        </div>
+        <div class="app-tab-item" onclick="switchMobileTab('summary')">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Totals</span>
+        </div>
+        <div class="app-tab-item" onclick="switchMobileTab('history')">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>History</span>
+        </div>
+    </nav>
 
     <!-- PRINTABLE A4 GST INVOICE LAYOUT -->
     <div id="printableInvoice">
@@ -1097,7 +1085,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC WITH AUTHENTICATION & RESPONSIVE CALCS -->
+    <!-- JAVASCRIPT LOGIC WITH AUTHENTICATION & MOBILE TAB SWITCHING -->
     <script>
         let itemsCount = 0;
 
@@ -1130,6 +1118,35 @@
         function handleLogout() {
             sessionStorage.removeItem('nellai_cctv_auth');
             location.reload();
+        }
+
+        // Native Mobile Tab Switching
+        function switchMobileTab(tab) {
+            const tabs = document.querySelectorAll('.app-tab-item');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            const panels = [
+                document.getElementById('panelCustomer'),
+                document.getElementById('panelItems'),
+                document.getElementById('panelSummary'),
+                document.getElementById('panelHistory')
+            ];
+
+            if (window.innerWidth <= 768) {
+                if (tab === 'bill') {
+                    tabs[0].classList.add('active');
+                    panels[0].scrollIntoView({ behavior: 'smooth' });
+                } else if (tab === 'presets') {
+                    tabs[1].classList.add('active');
+                    panels[1].scrollIntoView({ behavior: 'smooth' });
+                } else if (tab === 'summary') {
+                    tabs[2].classList.add('active');
+                    panels[2].scrollIntoView({ behavior: 'smooth' });
+                } else if (tab === 'history') {
+                    tabs[3].classList.add('active');
+                    panels[3].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         }
 
         // Initialize App & Load History
